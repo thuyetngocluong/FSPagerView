@@ -26,8 +26,9 @@ open class FSPagerViewTransformer: NSObject {
     open internal(set) weak var pagerView: FSPagerView?
     open internal(set) var type: FSPagerViewTransformerType
     
-    @objc open var minimumScale: CGFloat = 0.65
-    @objc open var minimumAlpha: CGFloat = 0.6
+    @objc open var minimumScale     : CGFloat = 0.65
+    @objc open var minimumAlpha     : CGFloat = 0.6
+    @objc open var interitemSpacing : CGFloat = 0
     
     @objc
     public init(type: FSPagerViewTransformerType) {
@@ -247,6 +248,7 @@ open class FSPagerViewTransformer: NSObject {
             }
             return pagerView.itemSize.width * -self.minimumScale * 0.6
         case .linear:
+            return interitemSpacing
             guard scrollDirection == .horizontal else {
                 return 0
             }
